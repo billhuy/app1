@@ -63,7 +63,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div class=\"content\">\n  <h1>\n    Welcome to {{ title }}!\n  </h1>\n  <app-word></app-word>\n  <p></p>\n  <app-user-form></app-user-form>\n  <app-struct></app-struct>\n  <app-words></app-words>\n  <router-outlet></router-outlet>\n</div>\n\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div class=\"content\">\n  <h1>\n    Welcome to {{ title }}!\n  </h1>\n  <app-word></app-word>\n  <p></p>\n  <app-user-form></app-user-form>\n  <app-struct></app-struct>\n  <app-words></app-words>\n  <app-person name = \"Bill Huy\" age = \"18\"></app-person>\n  <app-person name = \"Bill Duyen\" age = \"28\"></app-person>\n  <app-person name = \"Duyen Huy\" age = \"38\"></app-person>\n  <app-list-person></app-list-person>\n  <app-parent></app-parent>\n  <router-outlet></router-outlet>\n</div>\n\n"
 
 /***/ }),
 
@@ -130,6 +130,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_form_user_form_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./user-form/user-form.component */ "./src/app/user-form/user-form.component.ts");
 /* harmony import */ var _struct_struct_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./struct/struct.component */ "./src/app/struct/struct.component.ts");
 /* harmony import */ var _words_words_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./words/words.component */ "./src/app/words/words.component.ts");
+/* harmony import */ var _person_person_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./person/person.component */ "./src/app/person/person.component.ts");
+/* harmony import */ var _list_person_list_person_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./list-person/list-person.component */ "./src/app/list-person/list-person.component.ts");
+/* harmony import */ var _parent_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./parent.component */ "./src/app/parent.component.ts");
+/* harmony import */ var _child_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./child.component */ "./src/app/child.component.ts");
+
+
+
+
 
 
 
@@ -151,6 +159,10 @@ var AppModule = /** @class */ (function () {
                 _user_form_user_form_component__WEBPACK_IMPORTED_MODULE_7__["UserFormComponent"],
                 _struct_struct_component__WEBPACK_IMPORTED_MODULE_8__["StructComponent"],
                 _words_words_component__WEBPACK_IMPORTED_MODULE_9__["WordsComponent"],
+                _person_person_component__WEBPACK_IMPORTED_MODULE_10__["PersonComponent"],
+                _list_person_list_person_component__WEBPACK_IMPORTED_MODULE_11__["ListPersonComponent"],
+                _parent_component__WEBPACK_IMPORTED_MODULE_12__["ParentComponent"],
+                _child_component__WEBPACK_IMPORTED_MODULE_13__["ChildComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -162,6 +174,210 @@ var AppModule = /** @class */ (function () {
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/child.component.ts":
+/*!************************************!*\
+  !*** ./src/app/child.component.ts ***!
+  \************************************/
+/*! exports provided: ChildComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChildComponent", function() { return ChildComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var ChildComponent = /** @class */ (function () {
+    function ChildComponent() {
+        this.myClick1 = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.myClick2 = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+    }
+    ChildComponent.prototype.addForParent = function () {
+        this.myClick1.emit();
+    };
+    ChildComponent.prototype.minusForParent = function () {
+        this.myClick2.emit();
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], ChildComponent.prototype, "myClick1", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+    ], ChildComponent.prototype, "myClick2", void 0);
+    ChildComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-child',
+            template: "\n  <button (click) = \"addForParent()\">Add</button>\n  <button (click) = \"minusForParent()\">Minus</button>\n  "
+        })
+    ], ChildComponent);
+    return ChildComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/list-person/list-person.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/list-person/list-person.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<ng-container *ngFor=\"let item of arrPersons\">\n  <app-person [name] = \"item.name\" [age] = \"item.age\"></app-person>\n</ng-container>\n"
+
+/***/ }),
+
+/***/ "./src/app/list-person/list-person.component.scss":
+/*!********************************************************!*\
+  !*** ./src/app/list-person/list-person.component.scss ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2xpc3QtcGVyc29uL2xpc3QtcGVyc29uLmNvbXBvbmVudC5zY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/list-person/list-person.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/list-person/list-person.component.ts ***!
+  \******************************************************/
+/*! exports provided: ListPersonComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListPersonComponent", function() { return ListPersonComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var ListPersonComponent = /** @class */ (function () {
+    function ListPersonComponent() {
+        this.arrPersons = [
+            { name: 'Huy', age: '15' },
+            { name: 'Duyen', age: '25' },
+            { name: 'Manh', age: '35' },
+            { name: 'Quan', age: '45' },
+            { name: 'B', age: '55' },
+        ];
+    }
+    ListPersonComponent.prototype.ngOnInit = function () {
+    };
+    ListPersonComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-list-person',
+            template: __webpack_require__(/*! ./list-person.component.html */ "./src/app/list-person/list-person.component.html"),
+            styles: [__webpack_require__(/*! ./list-person.component.scss */ "./src/app/list-person/list-person.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], ListPersonComponent);
+    return ListPersonComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/parent.component.ts":
+/*!*************************************!*\
+  !*** ./src/app/parent.component.ts ***!
+  \*************************************/
+/*! exports provided: ParentComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ParentComponent", function() { return ParentComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var ParentComponent = /** @class */ (function () {
+    function ParentComponent() {
+        this.value = 0;
+    }
+    ParentComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-parent',
+            template: "\n  <h3>{{value}}</h3>\n  <app-child (myClick1) = \"value = value + 1\" (myClick2) = \"value = value - 1\"></app-child>\n  "
+        })
+    ], ParentComponent);
+    return ParentComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/person/person.component.html":
+/*!**********************************************!*\
+  !*** ./src/app/person/person.component.html ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h3>Name: {{name}}</h3>\n<p>Age: {{age}}</p>\n"
+
+/***/ }),
+
+/***/ "./src/app/person/person.component.scss":
+/*!**********************************************!*\
+  !*** ./src/app/person/person.component.scss ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BlcnNvbi9wZXJzb24uY29tcG9uZW50LnNjc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/person/person.component.ts":
+/*!********************************************!*\
+  !*** ./src/app/person/person.component.ts ***!
+  \********************************************/
+/*! exports provided: PersonComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PersonComponent", function() { return PersonComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var PersonComponent = /** @class */ (function () {
+    function PersonComponent() {
+    }
+    PersonComponent.prototype.ngOnInit = function () {
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)
+    ], PersonComponent.prototype, "name", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Number)
+    ], PersonComponent.prototype, "age", void 0);
+    PersonComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-person',
+            template: __webpack_require__(/*! ./person.component.html */ "./src/app/person/person.component.html"),
+            styles: [__webpack_require__(/*! ./person.component.scss */ "./src/app/person/person.component.scss")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], PersonComponent);
+    return PersonComponent;
 }());
 
 
