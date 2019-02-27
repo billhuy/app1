@@ -1,0 +1,9 @@
+<input type="text" placeholder="Enter your name" [(ngModel)]="userName">
+<h3>Your name is: {{userName}}</h3>
+<!-- <div class="circle"></div> -->
+<button (click)="changeShape()">Change Shape</button>
+<div class="circle"></div>
+<br>
+<div class="square"></div>
+<br>
+<div [class]=" isHighlight ? 'circle' : 'square'"></div>
